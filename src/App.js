@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import {
   JobSeekerDashboard,
   Register as JobSeekerRegistration,
@@ -7,10 +7,14 @@ import {
 } from "./pages/JobSeeker";
 import { Login } from "./pages";
 import { AgencyDashboard, AgencyRegistration } from "./pages/Agency";
+import { AgencyList } from "./pages/Admin";
 
 function App() {
   return (
     <Routes>
+      {/* Navigate to Job seeker dashboard route when it loads the default route */}
+      <Route path="/" element={<Navigate to="/jobseeker" />} />
+
       {/* Login pages */}
       {/* default login route assigned to Job seeker login */}
       <Route path="/Login" element={<Login />}>
@@ -29,6 +33,11 @@ function App() {
       <Route path="/Agency">
         <Route index element={<AgencyDashboard />} />
         <Route path="registration" element={<AgencyRegistration />} />
+      </Route>
+
+      {/* admin pages */}
+      <Route path="/Admin">
+        <Route index element={<AgencyList />} />
       </Route>
     </Routes>
   );

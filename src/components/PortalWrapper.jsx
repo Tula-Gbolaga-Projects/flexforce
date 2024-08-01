@@ -2,42 +2,128 @@
 
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import {
   FaHome,
   FaUser,
-  FaChartBar,
   FaSignOutAlt,
   FaBars,
+  FaBriefcase,
+  FaFileAlt,
+  FaUserFriends,
+  FaClipboardCheck,
 } from "react-icons/fa";
 import Logo from "../assets/logo.png";
+import { GrOrganization, GrUserAdd, GrUserWorker } from "react-icons/gr";
+import { MdSchedule } from "react-icons/md";
 
-const Sidebar = ({ isOpen, setIsSidebarOpen }) => (
-  <div
-    onMouseEnter={() => setIsSidebarOpen(true)}
-    onMouseLeave={() => setIsSidebarOpen(false)}
-    className={`fixed inset-0 top-0 h-full overflow-x-hidden  bg-gray-700 z-30 p-5 pt-[70px]  flex flex-col items-center transition-width duration-300 ${
-      isOpen ? "w-64" : "w-16"
-    }`}
-  >
-    <Link to="/" className="w-full text-white flex items-center my-2">
-      <FaHome className="text-2xl" />
-      {isOpen && <span className="ml-4">Home</span>}
+const MenuItem = ({ isOpen, name, to, children }) => {
+  return (
+    <Link to={to} className="w-full text-white flex items-center my-2">
+      {children}
+      {isOpen && <span className="ml-4">{name}</span>}
     </Link>
-    <Link to="/profile" className="w-full text-white flex items-center my-2">
-      <FaUser className="text-2xl" />
-      {isOpen && <span className="ml-4">Profile</span>}
-    </Link>
-    <Link to="/charts" className="w-full text-white flex items-center my-2">
-      <FaChartBar className="text-2xl" />
-      {isOpen && <span className="ml-4">Charts</span>}
-    </Link>
-    <Link to="/logout" className="w-full text-white flex items-center my-2">
-      <FaSignOutAlt className="text-2xl" />
-      {isOpen && <span className="ml-4">Logout</span>}
-    </Link>
-  </div>
-);
+  );
+};
+
+const AdminMenuItems = ({ isOpen }) => {
+  return (
+    <>
+      <MenuItem isOpen={isOpen} name="Agencies" to="/admin">
+        <FaHome className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Logout" to="/login/admin">
+        <FaSignOutAlt className="text-2xl" />
+      </MenuItem>
+    </>
+  );
+};
+
+const AgencyMenuItems = ({ isOpen }) => {
+  return (
+    <>
+      <MenuItem isOpen={isOpen} name="Home" to="/agency">
+        <FaHome className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Jobs" to="/jobseeker">
+        <FaBriefcase className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Applications" to="/jobseeker">
+        <FaFileAlt className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Shifts" to="/jobseeker">
+        <MdSchedule className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Job Seekers" to="/login">
+        <GrUserWorker className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Requests" to="/login">
+        <FaClipboardCheck className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Staff" to="/login">
+        <FaUserFriends className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Profile" to="/agency">
+        <FaUser className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Logout" to="/login/agency">
+        <FaSignOutAlt className="text-2xl" />
+      </MenuItem>
+    </>
+  );
+};
+
+const JobseekerMenuItems = ({ isOpen }) => {
+  return (
+    <>
+      <MenuItem isOpen={isOpen} name="Home" to="/jobseeker">
+        <FaHome className="text-2xl" />
+      </MenuItem>
+
+      <MenuItem isOpen={isOpen} name="Jobs" to="/jobseeker">
+        <FaBriefcase className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Applications" to="/jobseeker">
+        <FaFileAlt className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Shifts" to="/jobseeker">
+        <MdSchedule className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Invites" to="/jobseeker">
+        <GrUserAdd className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Profile" to="/jobseeker">
+        <FaUser className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Agencies" to="/jobseeker">
+        <GrOrganization className="text-2xl" />
+      </MenuItem>
+      <MenuItem isOpen={isOpen} name="Logout" to="/login">
+        <FaSignOutAlt className="text-2xl" />
+      </MenuItem>
+    </>
+  );
+};
+
+const Sidebar = ({ isOpen, setIsSidebarOpen }) => {
+  const { pathname } = useLocation();
+  const isAdmin = pathname.includes("admin");
+  const isAgency = pathname.includes("agency");
+  const isJobSeeker = pathname.includes("jobseeker");
+  return (
+    <div
+      onMouseEnter={() => setIsSidebarOpen(true)}
+      onMouseLeave={() => setIsSidebarOpen(false)}
+      className={`fixed inset-0 top-0 h-full overflow-x-hidden  bg-gray-700 z-30 p-5 pt-[70px]  flex flex-col items-center transition-width duration-300 ${
+        isOpen ? "w-64" : "w-16"
+      }`}
+    >
+      {isAdmin && <AdminMenuItems isOpen={isOpen} />}
+      {isAgency && <AgencyMenuItems isOpen={isOpen} />}
+      {isJobSeeker && <JobseekerMenuItems isOpen={isOpen} />}
+    </div>
+  );
+};
 
 const PortalWrapper = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);

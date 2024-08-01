@@ -1,4 +1,10 @@
+import { PortalWrapper } from "../../components";
+
 const AgencyList = () => {
-  return <p>Agencylist for admin to approve</p>;
+  return (
+    <PortalWrapper>
+      <p>Agencylist for admin to approve</p>{" "}
+    </PortalWrapper>
+  );
 };
-export default AgencyList;
+export { AgencyList };
