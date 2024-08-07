@@ -10,6 +10,7 @@ import {
   FaSignOutAlt,
   FaBars,
 } from "react-icons/fa";
+import Logo from "../assets/logo.png";
 
 const Sidebar = ({ isOpen, setIsSidebarOpen }) => (
   <div
@@ -47,14 +48,16 @@ const PortalWrapper = ({ children }) => {
 
   return (
     <div className="relative flex flex-col min-h-screen bg-white text-white  ">
-      <nav className="bg-gray-900 p-4 fixed w-full top-0 z-50 flex justify-between items-center">
+      <nav className="bg-gray-900 px-4 py-1 fixed w-full top-0 z-50 flex justify-between items-center">
         <button
           onClick={toggleSidebar}
           className="text-white focus:outline-none md:hidden"
         >
           <FaBars className="text-2xl" />
         </button>
-        <div className="text-white text-xl font-bold">Agency Portal</div>
+        <div className=" flex justify-center mb-2 w-[100px] h-[40px] ">
+          <img src={Logo} alt="cardimg" />
+        </div>
       </nav>
       <Sidebar isOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
       <div
