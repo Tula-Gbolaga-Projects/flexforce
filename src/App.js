@@ -4,9 +4,14 @@ import {
   JobSeekerDashboard,
   Register as JobSeekerRegistration,
   Profile as JobSeekerProfile,
+  Jobs,
 } from "./pages/JobSeeker";
 import { Login } from "./pages";
-import { AgencyDashboard, AgencyRegistration } from "./pages/Agency";
+import {
+  AgencyDashboard,
+  AgencyRegistration,
+  JobAndApplicants,
+} from "./pages/Agency";
 import { AgencyList } from "./pages/Admin";
 
 function App() {
@@ -27,12 +32,14 @@ function App() {
         <Route index element={<JobSeekerDashboard />} />
         <Route path="Registration" element={<JobSeekerRegistration />} />
         <Route path="Profile" element={<JobSeekerProfile />} />
+        <Route path="Jobs" element={<Jobs />} />
       </Route>
 
       {/* Agency pages */}
       <Route path="/Agency">
         <Route index element={<AgencyDashboard />} />
         <Route path="registration" element={<AgencyRegistration />} />
+        <Route path="Jobs/:jobId" element={<JobAndApplicants />} />
       </Route>
 
       {/* admin pages */}
