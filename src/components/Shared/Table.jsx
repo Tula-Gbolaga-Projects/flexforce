@@ -20,7 +20,9 @@ const Table = ({ tableData, onRowClick, columns }) => {
             {columns.map((column, index) => (
               <th
                 key={index}
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className={`px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ${
+                  column.sticky ? "sticky left-0 z-10 bg-white" : ""
+                } `}
               >
                 {column.header}
               </th>
@@ -40,7 +42,9 @@ const Table = ({ tableData, onRowClick, columns }) => {
               {columns.map((column, colIndex) => (
                 <td
                   key={colIndex}
-                  className="px-6 py-4 whitespace-nowrap text-sm text-gray-500"
+                  className={`px-6 py-4 whitespace-nowrap text-sm text-gray-500 ${
+                    column.sticky ? "sticky left-0 z-10 bg-white" : ""
+                  }`}
                 >
                   {column.cell ? column.cell(row) : row[column.accessor]}
                 </td>

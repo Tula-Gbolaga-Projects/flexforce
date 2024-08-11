@@ -11,6 +11,7 @@ import {
   AgencyDashboard,
   AgencyRegistration,
   JobAndApplicants,
+  StaffList,
 } from "./pages/Agency";
 import { AgencyList } from "./pages/Admin";
 
@@ -40,6 +41,7 @@ function App() {
         <Route index element={<AgencyDashboard />} />
         <Route path="registration" element={<AgencyRegistration />} />
         <Route path="Jobs/:jobId" element={<JobAndApplicants />} />
+        <Route path="staff" element={<StaffList />} />
       </Route>
 
       {/* admin pages */}
