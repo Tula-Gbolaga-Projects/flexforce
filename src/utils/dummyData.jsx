@@ -977,4 +977,109 @@ const singleJobSeeker = [
   },
   // ... (add 19 more similar objects with varied data)
 ];
-export { jobsList, staffList, agencies, generateJobSeekers, singleJobSeeker };
+
+const generateRandomJobSeeker = (id) => {
+  const statuses = ["Onboarded", "Not onboarded", "Applied", "Invitation Sent"];
+  const firstNames = [
+    "Emma",
+    "Liam",
+    "Olivia",
+    "Noah",
+    "Ava",
+    "Ethan",
+    "Sophia",
+    "Mason",
+    "Isabella",
+    "William",
+  ];
+  const lastNames = [
+    "Smith",
+    "Johnson",
+    "Brown",
+    "Taylor",
+    "Miller",
+    "Wilson",
+    "Moore",
+    "Anderson",
+    "Thomas",
+    "Jackson",
+  ];
+
+  return {
+    id,
+    firstName: firstNames[Math.floor(Math.random() * firstNames.length)],
+    lastName: lastNames[Math.floor(Math.random() * lastNames.length)],
+    email: `${firstNames[
+      Math.floor(Math.random() * firstNames.length)
+    ].toLowerCase()}.${lastNames[
+      Math.floor(Math.random() * lastNames.length)
+    ].toLowerCase()}@example.com`,
+    phoneNumber: `+44 ${Math.floor(Math.random() * 10000000000)
+      .toString()
+      .padStart(10, "0")}`,
+    profilePicture: `https://randomuser.me/api/portraits/${
+      Math.random() > 0.5 ? "men" : "women"
+    }/${id}.jpg`,
+    dateOfBirth: new Date(
+      1970 + Math.floor(Math.random() * 30),
+      Math.floor(Math.random() * 12),
+      Math.floor(Math.random() * 28) + 1
+    )
+      .toISOString()
+      .split("T")[0],
+    aboutMe: "Professional with diverse skills and experience in the industry.",
+    totalJobsDone: Math.floor(Math.random() * 50),
+    withAgency: Math.random() > 0.5,
+    totalHoursWorked: Math.floor(Math.random() * 5000),
+    lastActiveDate: new Date(
+      Date.now() - Math.floor(Math.random() * 30) * 24 * 60 * 60 * 1000
+    )
+      .toISOString()
+      .split("T")[0],
+    documents: [
+      {
+        name: "CV",
+        lastUpdated: "2024-07-01",
+        url: "https://example.com/cv.pdf",
+      },
+      {
+        name: "International Passport",
+        lastUpdated: "2023-12-15",
+        url: "https://example.com/passport.pdf",
+      },
+      {
+        name: "BRP",
+        lastUpdated: "2024-01-10",
+        url: "https://example.com/brp.pdf",
+      },
+      {
+        name: "National Insurance",
+        lastUpdated: "2024-02-20",
+        url: "https://example.com/ni.pdf",
+      },
+    ],
+    shareCode: {
+      code: Math.random().toString(36).substring(2, 10).toUpperCase(),
+      expiryDate: new Date(
+        Date.now() + Math.floor(Math.random() * 30) * 24 * 60 * 60 * 1000
+      )
+        .toISOString()
+        .split("T")[0],
+    },
+    agencyStatus: statuses[Math.floor(Math.random() * statuses.length)],
+  };
+};
+
+// Generate 25 job seekers
+const jobSeekers = Array.from({ length: 25 }, (_, i) =>
+  generateRandomJobSeeker(i + 1)
+);
+
+export {
+  jobsList,
+  staffList,
+  agencies,
+  generateJobSeekers,
+  singleJobSeeker,
+  jobSeekers,
+};

@@ -45,7 +45,7 @@ const AgencyMenuItems = ({ isOpen }) => {
       <MenuItem isOpen={isOpen} name="Home" to="/agency">
         <FaHome className="text-2xl" />
       </MenuItem>
-      <MenuItem isOpen={isOpen} name="Jobs" to="/agency/comingsoon">
+      <MenuItem isOpen={isOpen} name="Jobs" to="/agency/jobs">
         <FaBriefcase className="text-2xl" />
       </MenuItem>
       {/* <MenuItem isOpen={isOpen} name="Applications" to="/jobseeker">
@@ -54,12 +54,12 @@ const AgencyMenuItems = ({ isOpen }) => {
       <MenuItem isOpen={isOpen} name="Booked Jobs" to="/agency/comingsoon">
         <MdSchedule className="text-2xl" />
       </MenuItem>
-      <MenuItem isOpen={isOpen} name="Job Seekers" to="/agency/comingsoon">
+      <MenuItem isOpen={isOpen} name="Job Seekers" to="/agency/contractors">
         <GrUserWorker className="text-2xl" />
       </MenuItem>
-      <MenuItem isOpen={isOpen} name="Requests" to="/agency/comingsoon">
+      {/* <MenuItem isOpen={isOpen} name="Requests" to="/agency/comingsoon">
         <FaClipboardCheck className="text-2xl" />
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem isOpen={isOpen} name="Staff" to="/agency/staff">
         <FaUserFriends className="text-2xl" />
       </MenuItem>

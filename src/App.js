@@ -24,6 +24,7 @@ import {
   AgencyJobs,
   AgencyRegistration,
   JobAndApplicants,
+  JobSeekersList,
   StaffList,
 } from "./pages/Agency";
 import { AgencyList } from "./pages/Admin";
@@ -66,6 +67,7 @@ function App() {
         <Route path="jobs" element={<AgencyJobs />} />
         <Route path="Jobs/:jobId" element={<JobAndApplicants />} />
         <Route path="staff" element={<StaffList />} />
+        <Route path="contractors" element={<JobSeekersList />} />
       </Route>
 
       {/* admin pages */}
