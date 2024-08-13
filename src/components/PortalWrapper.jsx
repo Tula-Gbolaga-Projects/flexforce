@@ -83,19 +83,23 @@ const JobseekerMenuItems = ({ isOpen }) => {
       <MenuItem isOpen={isOpen} name="Jobs" to="/jobseeker/jobs">
         <FaBriefcase className="text-2xl" />
       </MenuItem>
-      <MenuItem isOpen={isOpen} name="Applications" to="/jobseeker/comingsoon">
+      <MenuItem
+        isOpen={isOpen}
+        name="Applications"
+        to="/jobseeker/applications"
+      >
         <FaFileAlt className="text-2xl" />
       </MenuItem>
-      <MenuItem isOpen={isOpen} name="Shifts" to="/jobseeker/comingsoon">
+      <MenuItem isOpen={isOpen} name="Shifts" to="/jobseeker/shifts">
         <MdSchedule className="text-2xl" />
       </MenuItem>
-      <MenuItem isOpen={isOpen} name="Invites" to="/jobseeker/comingsoon">
+      <MenuItem isOpen={isOpen} name="Invites" to="/jobseeker/invites">
         <GrUserAdd className="text-2xl" />
       </MenuItem>
       <MenuItem isOpen={isOpen} name="Profile" to="/jobseeker/comingsoon">
         <FaUser className="text-2xl" />
       </MenuItem>
-      <MenuItem isOpen={isOpen} name="Agencies" to="/jobseeker/comingsoon">
+      <MenuItem isOpen={isOpen} name="Agencies" to="/jobseeker/agencies">
         <GrOrganization className="text-2xl" />
       </MenuItem>
       <MenuItem isOpen={isOpen} name="Logout" to="/login">

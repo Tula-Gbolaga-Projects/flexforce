@@ -1,13 +1,23 @@
 import "./App.css";
 import { Routes, Route, Navigate } from "react-router-dom";
 import {
+  AgencyInvites,
+  AgencyOverview,
+  JobSeekerApplications,
   JobSeekerDashboard,
   Register as JobSeekerRegistration,
-  Profile as JobSeekerProfile,
+  JobSeekerShifts,
+  // Profile as JobSeekerProfile,
   Jobs,
   JobseekerComingSoon,
 } from "./pages/JobSeeker";
 import { Login } from "./pages";
+import {
+  JobSeekerProfile,
+  JobSeekerProfile2,
+  JobSeekerProfileForm,
+  JobSeekerProfileForm2,
+} from "./components";
 import {
   AgencyComingSoon,
   AgencyDashboard,
@@ -22,7 +32,7 @@ function App() {
   return (
     <Routes>
       {/* Navigate to Job seeker dashboard route when it loads the default route */}
-      <Route path="/" element={<Navigate to="/jobseeker" />} />
+      <Route path="/" element={<Navigate to="/login" />} />
 
       {/* Login pages */}
       {/* default login route assigned to Job seeker login */}
@@ -35,9 +45,17 @@ function App() {
       <Route path="/Jobseeker">
         <Route index element={<JobSeekerDashboard />} />
         <Route path="Registration" element={<JobSeekerRegistration />} />
-        <Route path="Profile" element={<JobSeekerProfile />} />
+        {/* <Route path="Profile" element={<JobSeekerProfile />} /> */}
         <Route path="Jobs" element={<Jobs />} />
         <Route path="comingsoon" element={<JobseekerComingSoon />} />
+        <Route path="profile/claudeai" element={<JobSeekerProfile />} />
+        <Route path="profile/chatgpt" element={<JobSeekerProfile2 />} />
+        <Route path="profileform/claudeai" element={<JobSeekerProfileForm />} />
+        <Route path="profileform/chatgpt" element={<JobSeekerProfileForm2 />} />
+        <Route path="Applications" element={<JobSeekerApplications />} />
+        <Route path="Shifts" element={<JobSeekerShifts />} />
+        <Route path="Agencies" element={<AgencyOverview />} />
+        <Route path="Invites" element={<AgencyInvites />} />
       </Route>
 
       {/* Agency pages */}

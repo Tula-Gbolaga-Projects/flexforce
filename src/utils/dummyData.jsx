@@ -1,3 +1,56 @@
+import { faker } from "@faker-js/faker";
+
+const generateJobSeekers = () => {
+  const jobSeekers = [];
+
+  for (let i = 0; i < 20; i++) {
+    const jobSeeker = {
+      firstName: faker.firstName(),
+      lastName: faker.lastName(),
+      email: faker.internet.email(),
+      phoneNumber: faker.phone.phoneNumber(),
+      profilePicture: faker.image.avatar(),
+      dateOfBirth: faker.date
+        .past(30, new Date("2000-01-01"))
+        .toISOString()
+        .split("T")[0],
+      aboutMe: faker.lorem.sentences(3),
+      totalJobsDone: faker.random.number({ min: 1, max: 100 }),
+      withAgency: faker.random.boolean(),
+      totalHoursWorked: faker.random.number({ min: 100, max: 5000 }),
+      lastActiveDate: faker.date.recent().toISOString().split("T")[0],
+      documents: [
+        {
+          documentName: "CV",
+          lastUpdated: faker.date.past().toISOString().split("T")[0],
+          documentUrl: faker.internet.url(),
+        },
+        {
+          documentName: "International Passport",
+          lastUpdated: faker.date.past().toISOString().split("T")[0],
+          documentUrl: faker.internet.url(),
+        },
+        {
+          documentName: "BRP",
+          lastUpdated: faker.date.past().toISOString().split("T")[0],
+          documentUrl: faker.internet.url(),
+        },
+        {
+          documentName: "National Insurance",
+          lastUpdated: faker.date.past().toISOString().split("T")[0],
+          documentUrl: faker.internet.url(),
+        },
+      ],
+      sharecode: faker.random.alphaNumeric(8),
+      sharecodeExpiry: faker.date.future().toISOString().split("T")[0],
+    };
+
+    jobSeekers.push(jobSeeker);
+  }
+
+  return jobSeekers;
+};
+
 const jobsList = [
   {
     id: 1,
@@ -880,4 +933,48 @@ const agencies = [
     },
   },
 ];
-export { jobsList, staffList, agencies };
+
+const singleJobSeeker = [
+  {
+    firstName: "John",
+    lastName: "Doe",
+    email: "john.doe@example.com",
+    phoneNumber: "+44 7123 456789",
+    profilePicture: "https://randomuser.me/api/portraits/men/1.jpg",
+    dateOfBirth: "1990-05-15",
+    aboutMe:
+      "Experienced software developer with a passion for creating efficient and scalable applications. Skilled in React, Node.js, and Python. Always eager to learn new technologies and contribute to innovative projects. I thrive in collaborative environments and enjoy solving complex problems.",
+    totalJobsDone: 15,
+    withAgency: false,
+    totalHoursWorked: 2500,
+    lastActiveDate: "2024-08-10",
+    documents: [
+      {
+        name: "CV",
+        lastUpdated: "2024-07-01",
+        url: "https://example.com/cv.pdf",
+      },
+      {
+        name: "International Passport",
+        lastUpdated: "2023-12-15",
+        url: "https://example.com/passport.pdf",
+      },
+      {
+        name: "BRP",
+        lastUpdated: "2024-01-10",
+        url: "https://example.com/brp.pdf",
+      },
+      {
+        name: "National Insurance",
+        lastUpdated: "2024-02-20",
+        url: "https://example.com/ni.pdf",
+      },
+    ],
+    shareCode: {
+      code: "A1B2C3D4",
+      expiryDate: "2024-09-13",
+    },
+  },
+  // ... (add 19 more similar objects with varied data)
+];
+export { jobsList, staffList, agencies, generateJobSeekers, singleJobSeeker };
