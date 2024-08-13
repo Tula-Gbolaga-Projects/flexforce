@@ -11,6 +11,7 @@ import { Login } from "./pages";
 import {
   AgencyComingSoon,
   AgencyDashboard,
+  AgencyJobs,
   AgencyRegistration,
   JobAndApplicants,
   StaffList,
@@ -44,6 +45,7 @@ function App() {
         <Route index element={<AgencyDashboard />} />
         <Route path="registration" element={<AgencyRegistration />} />
         <Route path="comingsoon" element={<AgencyComingSoon />} />
+        <Route path="jobs" element={<AgencyJobs />} />
         <Route path="Jobs/:jobId" element={<JobAndApplicants />} />
         <Route path="staff" element={<StaffList />} />
       </Route>
