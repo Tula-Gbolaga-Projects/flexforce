@@ -76,7 +76,7 @@ const AgencyJobs = () => {
         ),
       },
     ],
-    []
+    [navigate]
   );
   return (
     <PortalWrapper>

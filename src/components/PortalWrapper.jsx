@@ -11,7 +11,6 @@ import {
   FaBriefcase,
   FaFileAlt,
   FaUserFriends,
-  FaClipboardCheck,
 } from "react-icons/fa";
 import Logo from "../assets/logo.png";
 import { GrOrganization, GrUserAdd, GrUserWorker } from "react-icons/gr";
@@ -48,18 +47,14 @@ const AgencyMenuItems = ({ isOpen }) => {
       <MenuItem isOpen={isOpen} name="Jobs" to="/agency/jobs">
         <FaBriefcase className="text-2xl" />
       </MenuItem>
-      {/* <MenuItem isOpen={isOpen} name="Applications" to="/jobseeker">
-        <FaFileAlt className="text-2xl" />
-      </MenuItem> */}
-      <MenuItem isOpen={isOpen} name="Booked Jobs" to="/agency/comingsoon">
+
+      <MenuItem isOpen={isOpen} name="Booked Jobs" to="/agency/bookedjobs">
         <MdSchedule className="text-2xl" />
       </MenuItem>
       <MenuItem isOpen={isOpen} name="Job Seekers" to="/agency/contractors">
         <GrUserWorker className="text-2xl" />
       </MenuItem>
-      {/* <MenuItem isOpen={isOpen} name="Requests" to="/agency/comingsoon">
-        <FaClipboardCheck className="text-2xl" />
-      </MenuItem> */}
+
       <MenuItem isOpen={isOpen} name="Staff" to="/agency/staff">
         <FaUserFriends className="text-2xl" />
       </MenuItem>
