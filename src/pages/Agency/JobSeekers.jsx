@@ -4,17 +4,17 @@ import { jobSeekers } from "../../utils/dummyData";
 const JobSeekersList = () => {
   const columns = useMemo(
     () => [
-      {
-        header: "Profile",
-        accessor: "profilePicture",
-        cell: (row) => (
-          <img
-            src={row.profilePicture}
-            alt={`${row.firstName} ${row.lastName}`}
-            className="w-10 h-10 rounded-full"
-          />
-        ),
-      },
+      //   {
+      //     header: "Profile",
+      //     accessor: "profilePicture",
+      //     cell: (row) => (
+      //       <img
+      //         src={row.profilePicture}
+      //         alt={`${row.firstName} ${row.lastName}`}
+      //         className="w-10 h-10 rounded-full"
+      //       />
+      //     ),
+      //   },
       {
         header: "First Name",
         accessor: "firstName",

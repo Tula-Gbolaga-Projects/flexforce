@@ -1,5 +1,5 @@
 import React from "react";
-import { generateJobSeekers, singleJobSeeker } from "../../utils/dummyData";
+import { singleJobSeeker } from "../../utils/dummyData";
 import { PortalWrapper } from "../PortalWrapper";
 
 const JobSeekerProfile2 = () => {

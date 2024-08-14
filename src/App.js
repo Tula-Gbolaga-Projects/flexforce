@@ -23,6 +23,7 @@ import {
   AgencyDashboard,
   AgencyJobs,
   AgencyRegistration,
+  BookedJobs,
   JobAndApplicants,
   JobSeekersList,
   StaffList,
@@ -68,6 +69,7 @@ function App() {
         <Route path="Jobs/:jobId" element={<JobAndApplicants />} />
         <Route path="staff" element={<StaffList />} />
         <Route path="contractors" element={<JobSeekersList />} />
+        <Route path="bookedjobs" element={<BookedJobs />} />
       </Route>
 
       {/* admin pages */}
