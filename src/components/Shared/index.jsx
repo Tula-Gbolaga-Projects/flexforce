@@ -6,3 +6,5 @@ export * from "./JobSeekerProfile";
 export * from "./JobSeekerProfileForm";
 export * from "./JobSeekerProfileForm2";
 export * from "./AgencyStaffProfile";
+export * from "./Modal";
+export * from "./JobDetailsModal";

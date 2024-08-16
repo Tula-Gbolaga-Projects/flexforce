@@ -8,6 +8,7 @@ import {
   FaBuilding,
 } from "react-icons/fa";
 import { jobsList } from "../../utils/dummyData";
+import { Button } from "../UI";
 
 const JobDetails = ({ jobId }) => {
   const jobData = jobsList?.find((data) => {
@@ -106,27 +107,8 @@ const JobDetails = ({ jobId }) => {
               </div>
             </div>
           </div>
-
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-4 sm:space-y-0">
-            <div>
-              <span
-                className={`px-3 py-1 rounded-full text-sm font-semibold ${
-                  jobData?.myAgency
-                    ? "bg-green-100 text-green-800"
-                    : "bg-blue-100 text-blue-800"
-                }`}
-              >
-                {jobData?.myAgency ? "My Agency" : "Other Agency"}
-              </span>
-              {jobData?.invitedMe && (
-                <span className="ml-2 px-3 py-1 rounded-full bg-yellow-100 text-yellow-800 text-sm font-semibold">
-                  Invited
-                </span>
-              )}
-            </div>
-            <button className="w-full sm:w-auto bg-primary-500 hover:bg-primary-600 text-black font-bold py-2 px-4 rounded">
-              Apply Now
-            </button>
+          <div className="flex justify-end">
+            <Button title={"Apply"} />
           </div>
         </div>
       </div>
