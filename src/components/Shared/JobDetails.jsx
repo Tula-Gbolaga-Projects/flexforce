@@ -9,8 +9,11 @@ import {
 } from "react-icons/fa";
 import { jobsList } from "../../utils/dummyData";
 import { Button } from "../UI";
+import { useLocation } from "react-router-dom";
 
 const JobDetails = ({ jobId }) => {
+  const { pathname } = useLocation();
+  const showApply = pathname.includes("jobseeker/jobs");
   const jobData = jobsList?.find((data) => {
     return data?.id === +jobId;
   });
@@ -107,9 +110,11 @@ const JobDetails = ({ jobId }) => {
               </div>
             </div>
           </div>
-          <div className="flex justify-end">
-            <Button title={"Apply"} />
-          </div>
+          {showApply && (
+            <div className="flex justify-end">
+              <Button title={"Apply"} />
+            </div>
+          )}
         </div>
       </div>
     </div>

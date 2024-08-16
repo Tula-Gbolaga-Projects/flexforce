@@ -8,3 +8,4 @@ export * from "./JobSeekerProfileForm2";
 export * from "./AgencyStaffProfile";
 export * from "./Modal";
 export * from "./JobDetailsModal";
+export * from "./AgencyDetailsModal";
