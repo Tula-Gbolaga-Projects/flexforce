@@ -1,0 +1,27 @@
+name: FLEXFORCE FRONTEND
+
+on:
+  push:
+    branches: [ "dev"]
+  pull_request:
+    branches: [ "dev"]
+
+jobs:
+ staging:
+   name: FLEXFORCE API
+   runs-on: ubuntu-latest
+   steps:
+    - name: deploying to server
+      if: ${{ github.ref == 'refs/heads/dev' }}
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.FLEXFORCE_SERVER }}
+        username: ${{ secrets.FLEXFORCE_USER }}
+        key: ${{ secrets.FLEXFORCE_KEYS }}
+        port: ${{ secrets.FLEXFORCE_PORT }}
+        script: |
+          cd /usr/flexforce-project/flexforce/
+          sudo git pull origin dev
+          sudo docker build -t flex-force-frontend .
+          sudo docker rm -f flex-force-frontend || true
+        sudo docker run --name flex-force-frontend -d -p 6600:6600 --restart always flex-force-frontend
