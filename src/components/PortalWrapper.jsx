@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FaHome,
   FaUser,
@@ -15,14 +15,33 @@ import {
 import Logo from "../assets/logo.png";
 import { GrOrganization, GrUserAdd, GrUserWorker } from "react-icons/gr";
 import { MdSchedule } from "react-icons/md";
+import { PrivateRoute } from "./PrivateRoute";
+import { useLogout } from "../hooks";
 
-const MenuItem = ({ isOpen, name, to, children }) => {
-  return (
-    <Link to={to} className="w-full text-white flex items-center my-2">
-      {children}
-      {isOpen && <span className="ml-4">{name}</span>}
-    </Link>
-  );
+const MenuItem = ({ isOpen, name, to, isLogout, children }) => {
+  const { logout } = useLogout();
+  const navigate = useNavigate();
+  if (!isLogout) {
+    return (
+      <Link to={to} className="w-full text-white flex items-center my-2">
+        {children}
+        {isOpen && <span className="ml-4">{name}</span>}
+      </Link>
+    );
+  } else {
+    return (
+      <div
+        className="w-full text-white flex items-center my-2"
+        onClick={() => {
+          logout();
+          navigate(to);
+        }}
+      >
+        {children}
+        {isOpen && <span className="ml-4">{name}</span>}
+      </div>
+    );
+  }
 };
 
 const AdminMenuItems = ({ isOpen }) => {
@@ -132,28 +151,30 @@ const PortalWrapper = ({ children }) => {
   };
 
   return (
-    <div className="relative flex flex-col min-h-screen bg-white text-white  ">
-      <nav className="bg-gray-900 px-4 py-1 fixed w-full top-0 z-50 flex justify-between items-center">
-        <button
-          onClick={toggleSidebar}
-          className="text-white focus:outline-none md:hidden"
+    <PrivateRoute>
+      <div className="relative flex flex-col min-h-screen bg-white text-white  ">
+        <nav className="bg-gray-900 px-4 py-1 fixed w-full top-0 z-50 flex justify-between items-center">
+          <button
+            onClick={toggleSidebar}
+            className="text-white focus:outline-none md:hidden"
+          >
+            <FaBars className="text-2xl" />
+          </button>
+          <div className=" flex justify-center mb-2 w-[100px] h-[40px] ">
+            <img src={Logo} alt="cardimg" />
+          </div>
+        </nav>
+        <Sidebar isOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
+        <div
+          className={`flex-grow ml-1 transition-margin duration-300 bg-white md:pl-16 mt-[70px]`}
         >
-          <FaBars className="text-2xl" />
-        </button>
-        <div className=" flex justify-center mb-2 w-[100px] h-[40px] ">
-          <img src={Logo} alt="cardimg" />
+          {children}
         </div>
-      </nav>
-      <Sidebar isOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
-      <div
-        className={`flex-grow ml-1 transition-margin duration-300 bg-white md:pl-16 mt-[70px]`}
-      >
-        {children}
+        <footer className="bg-gray-900 text-white p-4 mt-auto text-center ">
+          &copy; 2024 Tula Gbolaga. All rights reserved.
+        </footer>
       </div>
-      <footer className="bg-gray-900 text-white p-4 mt-auto text-center ">
-        &copy; 2024 Tula Gbolaga. All rights reserved.
-      </footer>
-    </div>
+    </PrivateRoute>
   );
 };
 

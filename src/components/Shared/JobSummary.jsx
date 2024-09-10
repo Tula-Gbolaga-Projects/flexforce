@@ -3,7 +3,10 @@ import { FaMapMarkerAlt, FaMoneyBillWave } from "react-icons/fa";
 const JobSummary = ({ data, onClickView }) => {
   //comment to push
   return (
-    <div className="text-black flex border-2 rounded-lg overflow-hidden shadow-md">
+    <div
+      className="text-black flex border-2 rounded-lg overflow-hidden shadow-md"
+      key={data?.id}
+    >
       <div className="w-1/3 bg-gray-100 p-4 flex flex-col justify-between">
         <div>
           <p className="text-primary font-semibold mb-2">{data?.jobTitle}</p>

@@ -4,7 +4,7 @@ const Input = ({
   placeholder,
   errorMsg,
   value,
-  setValue,
+  onChange,
   ...others
 }) => {
   return (
@@ -22,7 +22,7 @@ const Input = ({
         id={label?.replace(" ", "")}
         placeholder={placeholder}
         className=" shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        onClick={setValue}
+        onChange={onChange}
         {...others}
       />
       {errorMsg && (
