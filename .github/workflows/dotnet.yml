@@ -24,4 +24,4 @@ jobs:
           sudo git pull origin dev
           sudo docker build -t flex-force-frontend .
           sudo docker rm -f flex-force-frontend || true
-        sudo docker run --name flex-force-frontend -d -p 6600:6600 --restart always flex-force-frontend
+          sudo docker run --name flex-force-frontend -d -p 6600:6600 --restart always flex-force-frontend
