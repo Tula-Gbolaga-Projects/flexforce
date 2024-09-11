@@ -15,6 +15,7 @@ const PrivateRoute = ({ children }) => {
     if (!valid) {
       localStorage.setItem(redirectKey, pathname);
       logout();
+      navigate("/");
     }
   }, [valid, logout, pathname]);
 
@@ -22,7 +23,6 @@ const PrivateRoute = ({ children }) => {
     return <div>{children}</div>;
   } else {
     // return null;
-    navigate("/");
   }
 };
 

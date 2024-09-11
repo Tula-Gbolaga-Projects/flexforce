@@ -1,9 +1,15 @@
-import { useMemo } from "react";
+import { useMemo, useEffect } from "react";
 import { Button, PortalWrapper } from "../../components";
 import { Table } from "../../components";
 import { agencies } from "../../utils/dummyData";
+import { useDispatch } from "react-redux";
+import { adminGetAgencies } from "../../redux/slices";
 
 const AgencyList = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(adminGetAgencies());
+  }, []);
   const agencyListColumn = useMemo(
     () => [
       {

@@ -10,6 +10,7 @@ const loginKey = "flexforce-lastLogin";
 const redirectKey = "flexforce-redirect";
 const userIdKey = "flexforce-userid";
 const roleKey = "flexforce-role";
+const REACT_APP_BASE_URL = "https://localhost:7279/api/v1/";
 
 const timeString = (x) => {
   return new Date(x).toLocaleTimeString([], {
@@ -26,4 +27,5 @@ export {
   userIdKey,
   roleKey,
   timeString,
+  REACT_APP_BASE_URL,
 };

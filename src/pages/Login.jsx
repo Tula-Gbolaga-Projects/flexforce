@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Button, Input } from "../components/UI";
 import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../redux/slices";
 
 const Login = () => {
@@ -16,6 +16,7 @@ const Login = () => {
   const isAgency = pathname === "/login/agency";
   const isJobSeeker = pathname === "/login";
   const dispatch = useDispatch();
+  const { loginStatus } = useSelector((state) => state?.user);
 
   const emailHandler = (x) => {
     setEmail(x.target.value);
@@ -45,7 +46,6 @@ const Login = () => {
     dispatch(userLogin({ userName: email, password }))
       .unwrap()
       .then((response) => {
-        console.log(response);
         navigate(redirectPath);
       })
       .catch((error) => {
@@ -133,7 +133,11 @@ const Login = () => {
             />
             <p className="text-blue-500 italic">Forgot Password?</p>
             <div className="flex items-center justify-center my-2">
-              <Button title="Sign In" onClick={submitFunc} />
+              <Button
+                title="Sign In"
+                onClick={submitFunc}
+                status={loginStatus}
+              />
             </div>
           </form>
         </div>
